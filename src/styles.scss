@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+@import "variables";
+
+.container {
+  max-width: -webkit-fill-available;
+  max-height: fit-content;
+
+  @media screen and (max-width: 775px) {
+    max-width: 100%;
+  }
+
+  background-color: $lightGrey;
+
+  .greenBg {
+    background-color: $green;
+  }
+
+  .whiteBg {
+    background-color: white;
+  }
+
+
+  p,
+  strong,
+  a,
+  span,
+  input {
+    font-family: FontAvenirRegular;
+  }
+
+  h2,
+  h4,
+  h6 {
+    font-family: FontAvenirMedium;
+  }
+
+  h5 {
+    font-family: FontAvenirRegular;
+    color: $green;
+  }
+  }
+
+  // body {
+  //   width: 100%;
+  //   margin: 0;
+  //   padding: 0;
+  //   min-height: 100%;
+  //   height: auto !important;
+  //   /* cross-browser */
+  //   height: 100%;
+  //   /* cross-browser */
+  //   color:black;
+  // }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
