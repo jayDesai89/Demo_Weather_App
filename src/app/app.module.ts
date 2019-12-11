@@ -15,13 +15,17 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { TempconverterPipe } from './pipes/tempconverter.pipe';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { CheckDatePipe } from './pipes/check-date.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    TempconverterPipe
+    TempconverterPipe,
+    CapitalizePipe,
+    CheckDatePipe
   ],
   imports: [
     BrowserModule,

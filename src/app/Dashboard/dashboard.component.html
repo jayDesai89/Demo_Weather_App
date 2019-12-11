@@ -1,124 +1,205 @@
-<div class="header">
-  <div class="row">
-    <div class="col-12" style="text-align: center;">
-      <div class="title" style="width:100%; padding: 10%;background-color: transparent;">
-        <h1>
-          My Weather App
-        </h1>
+<div class="dashboard">
+  <div class="header">
+    <div class="row mb-3">
+      <div class="col-12 text-center">
+        <div class="titleDiv">
+          <h1>
+            My Weather App
+          </h1>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div>
-        <div class="row">
-          <!------------------>
-          <div class="col-12">
-            <div>
-              <form action="" (ngSubmit)="getWeatherForCity(findCityForm.value)" [formGroup]="findCityForm">
-                <!-- form row for input field starts here -->
-                <div class="row" style="border: 1px solid greenyellow;">
-                  <div class="col-lg-10 col-md-8 col-sm-12 m-auto" style="text-align: center;">
-                    <div style="width: 100%;">
-                      <mat-form-field style="width:100%;padding:3%">
-                        <input matInput placeholder="Enter name of the city" (ngSubmit)="getWeatherForCity()"
-                          formControlName="nameOfCity">
-                      </mat-form-field>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div>
+          <div class="row">
+            <div class="col-12">
+              <div>
+                <form action="" class="formStyle" (ngSubmit)="getWeatherForCity(findCityForm.value)"
+                  [formGroup]="findCityForm">
+                  <!-- form row for input field starts here -->
+                  <div class="row">
+                    <div class="col-lg-10 col-md-8 col-sm-12 m-auto text-center">
+                      <div class="w-100">
+                        <mat-form-field>
+                          <input matInput placeholder="Enter name of the city" (ngSubmit)="getWeatherForCity()"
+                            formControlName="nameOfCity" required>
+                          <mat-error *ngIf="cityName.invalid">
+                            Please enter valid city name
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 m-auto text-left">
+                      <div>
+                        <button mat-raised-button class="col-auto" type="submit" (click)="displayWeather = true">
+                          Search
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 m-auto" style="text-align: left;">
-                    <div>
-                      <button mat-raised-button class="col-auto" type="submit" (click)="displayWeather = true">
-                        Search
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <!-- Form row for input field ends here -->
-              </form>
-            </div>
-            <div style="text-align: center;">
-              <h5>
-                Current weather and forecast of the city
-              </h5>
-              <div >
-                  <mat-button-toggle-group #tempConverterGroup="matButtonToggleGroup" value="fahrenheit"
-                    (click)="switchUnit(tempConverterGroup.value)">
-                    <mat-button-toggle value="celsius">&#8451;</mat-button-toggle>
-                    <mat-button-toggle value="fahrenheit">&#8457;</mat-button-toggle>
-                  </mat-button-toggle-group>
-                </div>
+                  <!-- Form row for input field ends here -->
+                </form>
+              </div>
+              <div class="text-center" *ngIf="cityWeather">
+                <h5>
+                  Current weather and forecast the city
+                </h5>
+              </div>
             </div>
           </div>
-          <!--------------------->
+          <div class="row mt-3" *ngIf="cityWeather">
+            <div class="col-12" style="text-align: center;">
+              <div>
+                <mat-button-toggle-group #tempConverterGroup="matButtonToggleGroup" value="fahrenheit"
+                  (click)="switchUnit(tempConverterGroup.value)">
+                  <mat-button-toggle value="celsius">&#8451;</mat-button-toggle>
+                  <mat-button-toggle value="fahrenheit">&#8457;</mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+            </div>
+            <!-- Temp main col-->
+            <div class="col-8">
+              <!---Row 1 for title of the city-->
+              <div class="row">
+                <div class="col-12">
+                  <div>
+                    <h2>
+                      {{cityWeather.name}}, {{cityWeather.sys.country}} {{weatherInDegrees}}
+                      <span clas="logoF" *ngIf="tempConverterGroup.value == 'fahrenheit'">
+                        &#8457;
+                      </span>
+                      <span class="logoC" *ngIf="tempConverterGroup.value == 'celsius'">
+                        &#8451;
+                      </span>
+                    </h2>
+                    <h4 *ngFor="let info of cityWeather.weather; i as index">
+                      {{info.description | capitalize}}
+                    </h4>
+                  </div>
+                </div>
+                <div class="col-1">
+                </div>
+              </div>
+              <!-- Row 2 for weather Data-->
+              <div class="row mb-4">
+                <div class="col-6">
+                  <div>
+                    <strong>
+                      Max Temperature:
+                    </strong>
+                    <span>
+                      {{cityWeather.main.temp_max | tempconverter}} &#8457;
+                    </span>
+                  </div>
+                  <div>
+                    <strong>
+                      Min Temperature:
+                    </strong>
+                    <span>
+                      {{cityWeather.main.temp_min | tempconverter}} &#8457;
+                    </span>
+                  </div>
+
+                </div>
+                <div class="col-6">
+                  <div>
+                    <strong>
+                      Humidity:
+                    </strong>
+                    <span>
+                      {{cityWeather.main.humidity}}
+                      <span>
+                        %
+                      </span>
+                    </span>
+                  </div>
+                  <div>
+                    <strong>
+                      Pressure
+                    </strong>
+                    <span>
+                      {{cityWeather.main.pressure}}
+                    </span>
+                  </div>
+                </div>
+                <!-- <div class="col-6">
+
+              </div> -->
+              </div>
+            </div>
+            <!------------------------------>
+          </div>
         </div>
         <div class="row" *ngIf="cityWeather">
-          <!---------------------------->
-          <!-- Temp main col-->
-          <div class="col-8">
-            <!---Row 1 for title of the city-->
-            <div class="row">
-              <div class="col-11">
-                <div>
-                  <h2>
-                    {{cityWeather.name}}  {{weatherInDegrees}}
-                    <span *ngIf="tempConverterGroup.value == 'fahrenheit'" style="margin-left: -3px;">
-                        &#8457;
-                    </span>
-                    <span *ngIf="tempConverterGroup.value == 'celsius'" style="margin-left: -3px;">
-                        &#8451;
-                    </span>
-                  </h2>
-                </div>
-              </div>
-              <div class="col-1">
-              </div>
-            </div>
-            <!-- Row 2 for weather Data-->
-            <div class="row">
-              <div class="col-6">
-                <strong>
-                  Max Temprature:
-                </strong>
-                <span>
-                  {{cityWeather.main.temp_max}}
-                </span>
-              </div>
-              <div class="col-6">
-                <strong>
-                  Min Temprature:
-                </strong>
-                <span>
-                  {{cityWeather.main.temp_min}}
-                </span>
-              </div>
-              <div class="col-6">
-                <strong>
-                  Humidity:
-                </strong>
-                <span>
-                  {{cityWeather.main.humidity}}
-                </span>
-              </div>
-              <div class="col-6">
-                <strong>
-                  Pressure
-                </strong>
-                <span>
-                  {{cityWeather.main.pressure}}
-                </span>
-              </div>
+          <div class="col-12 text-center">
+            <div class="mb-4">
+              <button mat-raised-button type="button" (click)=getForecastedWeather(findCityForm.value)>
+                Show me forecast
+              </button>
             </div>
           </div>
-          <!------------------------------>
+          <div class="col-12 text-center" *ngIf="forecastedWeather">
+            <div class="mb-3">
+              <h3>
+                5 Day weather forecast
+              </h3>
+            </div>
+          </div>
+          <div class="col-12" *ngIf="forecastedWeather">
+            <div>
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col text-center">
+                      <h5>
+                        Date
+                      </h5>
+                    </th>
+                    <th scope="col">
+                      <h5>
+                        Time
+                      </h5>
+                    </th>
+                    <th scope="col">
+                      <h5>
+                        Weather
+                      </h5>
+                    </th>
+                    <!-- <th scope="col">Weather</th> -->
+                  </tr>
+                  <tr *ngFor="let day of forecastedWeather.list; i as index">
+                    <td>
+                      <p class="">
+                        {{day.dt_txt | date:'medium'}}
+                      </p>
+                    </td>
+                    <td>
+                      <p>
+                        {{day.dt_txt | date:'shortTime'}}
+                      </p>
+                    </td>
+                    <td>
+                      <p>
+                        <span>
+                          Max Temp:
+                        </span>
+                        {{day.main.temp_max | tempconverter}} &#8457;</p>
+                      <p>
+                        <span>
+                          Min Temp:
+                        </span>
+                        {{day.main.temp_min | tempconverter}} &#8457;</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <button mat-button-raised type="button" (click)=getForcastedWeather(findCityForm.value)>
-          Show me forcast
-        </button>
       </div>
     </div>
   </div>

@@ -1,5 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
 @import "variables";
+@font-face {
+  font-family: FontAvenirRegular;
+  // /font/AvenirNext_Regular.ttf
+  src: url(font/AvenirNext_Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  color: $black;
+}
+
+@font-face {
+  font-family: FontAvenirMedium;
+  src: url(font/AvenirNext_Medium.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: FontAvenirMediumItalic;
+  src: url(font/AvenirNext_MediumItalic.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: FontAvenirHeavy;
+  src: url(font/AvenirNext_Heavy.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: FontAvenirLight;
+  src: url(font/AvenirNext_UltraLight.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: FontAvenirUltraLight;
+  src: url(font/AvenirNext_UltraLightItalic.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 .container {
   max-width: -webkit-fill-available;
@@ -36,21 +79,19 @@
 
   h5 {
     font-family: FontAvenirRegular;
-    color: $green;
+    color: $black;
   }
   }
 
-  // body {
-  //   width: 100%;
-  //   margin: 0;
-  //   padding: 0;
-  //   min-height: 100%;
-  //   height: auto !important;
-  //   /* cross-browser */
-  //   height: 100%;
-  //   /* cross-browser */
-  //   color:black;
-  // }
+  .text-center {
+    text-align: center;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .text-right {
+    text-align: right;
+  }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,3 +1,3 @@
-export class ForcastedWeather {
+export class ForecastedWeather {
 
 }

@@ -14,6 +14,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   findCityForm: FormGroup;
   cityWeather;
   weatherInDegrees;
+  forecastedWeather;
+
+   get cityName() {
+     return this.findCityForm.get('nameOfCity');
+   }
   /**: any
    * Get name of the city
    * Get the weather of that city
@@ -32,39 +37,29 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   getWeatherForCity(value) {
-    console.log(value);
     this.city = value.nameOfCity;
     this.weatherDataService.getWeatherData(this.city).subscribe((res) => {
       this.cityWeather = res;
-      console.log(this.cityWeather);
       this.weatherInDegrees = this.cityWeather.main.temp;
       this.switchUnit('kelvin');
-      // this.tempConvertor(this.cityWeather.main.temp, 'kelvin');
     })
 
   }
 
-  getForcastedWeather(value) {
-    this.weatherDataService.getForcastOfWeather(this.city).subscribe((res) => {
-      console.log('Forcasted', res)
+  getForecastedWeather(value) {
+    this.weatherDataService.getForecastOfWeather(this.city).subscribe((res ) => {
+      this.forecastedWeather = res;
+      console.log(res);
     })
   }
-
-  // tempConvertor(tempVal) {
-  //   const unitCelsius = tempVal - 273;
-  //   const unitFahrenheit = Math.floor(unitCelsius * (9 / 5) + 32);
-  //   return this.weatherDegreesFahrenheit = unitFahrenheit;
-  // }
 
   switchUnit(tempUnit) {
-    const unitCelsius = this.cityWeather.main.temp - 273;
-    console.log('Cels', unitCelsius)
+    const unitCelsius = Math.floor(this.cityWeather.main.temp - 273);
     const unitFahrenheit = Math.floor(unitCelsius * (9 / 5) + 32);
-    console.log('Fah', unitFahrenheit)
-    if(tempUnit === 'celsius' || tempUnit === 'kelvin') {
+    if(tempUnit === 'celsius') {
+      this.weatherInDegrees = unitCelsius ;
+    } else if (tempUnit === 'fahrenheit' || tempUnit === 'kelvin') {
       this.weatherInDegrees = unitFahrenheit;
-    } else if (tempUnit === 'fahrenheit') {
-      this.weatherInDegrees = unitCelsius;
     }
   }
 
