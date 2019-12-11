@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.cityWeather = res;
       console.log(this.cityWeather);
       this.weatherInDegrees = this.cityWeather.main.temp;
+      this.switchUnit('kelvin');
       // this.tempConvertor(this.cityWeather.main.temp, 'kelvin');
     })
 
@@ -57,10 +58,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   switchUnit(tempUnit) {
     const unitCelsius = this.cityWeather.main.temp - 273;
-console.log('Cels', unitCelsius)
+    console.log('Cels', unitCelsius)
     const unitFahrenheit = Math.floor(unitCelsius * (9 / 5) + 32);
     console.log('Fah', unitFahrenheit)
-    if(tempUnit === 'celsius') {
+    if(tempUnit === 'celsius' || tempUnit === 'kelvin') {
       this.weatherInDegrees = unitFahrenheit;
     } else if (tempUnit === 'fahrenheit') {
       this.weatherInDegrees = unitCelsius;

@@ -43,7 +43,7 @@
               <h5>
                 Current weather and forecast of the city
               </h5>
-              <div>
+              <div >
                   <mat-button-toggle-group #tempConverterGroup="matButtonToggleGroup" value="fahrenheit"
                     (click)="switchUnit(tempConverterGroup.value)">
                     <mat-button-toggle value="celsius">&#8451;</mat-button-toggle>
@@ -63,7 +63,7 @@
               <div class="col-11">
                 <div>
                   <h2>
-                    {{cityWeather.name}}  {{weatherInDegrees | tempconverter}}
+                    {{cityWeather.name}}  {{weatherInDegrees}}
                     <span *ngIf="tempConverterGroup.value == 'fahrenheit'" style="margin-left: -3px;">
                         &#8457;
                     </span>
