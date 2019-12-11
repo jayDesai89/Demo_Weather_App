@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { WeatherDataByCity } from 'src/app/models/dataByCity';
+import { ForcastedWeather } from 'src/app/models/forcastedData';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,13 @@ export class WeatherDataService {
      * Practical Approach would be,
      * Subscribe to the response, set res.success(), res.failure() methods
      */
-    this.apiRes = this._http.get(`http://api.openweathermap.org/data/2.5/forecast?q=${q}&APPID=5d2a116653d0785ed8c6889aa535b3f2`);
+    this.apiRes = this._http.get(`http://api.openweathermap.org/data/2.5/weather?q=${q}&APPID=5d2a116653d0785ed8c6889aa535b3f2`);
     return this.apiRes as Observable<WeatherDataByCity>;
+  }
+
+  getForcastOfWeather(q: any): Observable<ForcastedWeather>{
+    this.apiRes = this._http.get(`http://api.openweathermap.org/data/2.5/forecast?q=${q}&APPID=5d2a116653d0785ed8c6889aa535b3f2`);
+    return this.apiRes as Observable<ForcastedWeather>;
   }
 
   /**
