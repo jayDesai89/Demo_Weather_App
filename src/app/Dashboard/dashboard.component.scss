@@ -1,0 +1,33 @@
+.dashboard {
+  font-family: FontAvenirHeavy;
+  // font-style: oblique;
+  .container {
+    border-radius: 7px;
+  }
+  .header {
+    background-image: url('../../images/toronto-skyline-lake-ontario-sunset-canada-1600x900.jpg');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    background-position-y: -90px;
+  }
+
+  .titleDiv {
+    padding: 5%;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  form {
+    background-color: transparent;
+    mat-form-field {
+      width: 100%;
+      padding: 3%
+    }
+  }
+
+  .logoF,
+  .logoC {
+    margin-left: -4px;
+  }
+}
