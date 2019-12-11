@@ -45,7 +45,7 @@
               </div>
               <div class="text-center" *ngIf="cityWeather">
                 <h5>
-                  Current weather and forecast the city
+                  Current weather and forecast for the city
                 </h5>
               </div>
             </div>
@@ -125,35 +125,30 @@
                     </span>
                   </div>
                 </div>
-                <!-- <div class="col-6">
-
-              </div> -->
               </div>
             </div>
-            <!------------------------------>
           </div>
         </div>
         <div class="row" *ngIf="cityWeather">
           <div class="col-12 text-center">
             <div class="mb-4">
-              <button mat-raised-button type="button" (click)=getForecastedWeather(findCityForm.value)>
+              <button mat-raised-button type="button" (click)="showForecast = !showForecast;this.getForecastedWeather(findCityForm.value);">
                 Show me forecast
               </button>
             </div>
           </div>
-          <div class="col-12 text-center" *ngIf="forecastedWeather">
+          <div class="col-12 text-center" *ngIf="showForecast">
             <div class="mb-3">
               <h3>
                 5 Day weather forecast
               </h3>
             </div>
           </div>
-          <div class="col-12" *ngIf="forecastedWeather">
+          <div class="col-12" *ngIf="showForecast">
             <div>
               <table class="table table-striped">
                 <tbody>
                   <tr>
-                    <!-- <th scope="col">#</th> -->
                     <th scope="col text-center">
                       <h5>
                         Date
@@ -169,7 +164,6 @@
                         Weather
                       </h5>
                     </th>
-                    <!-- <th scope="col">Weather</th> -->
                   </tr>
                   <tr *ngFor="let day of forecastedWeather.list; i as index">
                     <td>
