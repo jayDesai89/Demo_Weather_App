@@ -51,14 +51,30 @@ export class DashboardComponent implements OnInit {
       this.cityWeather = res;
       this.weatherInDegrees = this.cityWeather.main.temp;
       this.switchUnit('kelvin');
+    },
+    (error: Response) => {
+      if(error.status === 404) {
+        this.findCityForm.get('nameOfCity').setErrors(error.json());
+        alert ('Please enter valid name of the city')
+      } else {
+        alert ('Oops! This is unexpected');
+      }
     })
   }
 
   // Get forecasted weather of city
   getForecastedWeather(value) {
-    this.weatherDataService.getForecastOfWeather(this.city).subscribe((res ) => {
+    this.weatherDataService.getForecastOfWeather(this.city).subscribe((res: Response ) => {
       this.forecastedWeather = res;
       console.log(res);
+    },
+    (error: Response) => {
+      // Expected Errors
+      if (error.status === 404) {
+        alert ('No worries! This error is expected');
+      } else {
+        alert ('Oops! This is unexpected');
+      }
     })
   }
 
