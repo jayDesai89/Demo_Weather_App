@@ -1,3 +1,7 @@
+# Goal
+
+Ddevelop a weather app in short time span (4 hours) built with Angular 8.
+
 # DemoWeatherApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
