@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { WeatherDataByCity } from 'src/app/models/dataByCity';
 import { ForecastedWeather } from 'src/app/models/forcastedData';
 import { ApplicationErrors } from 'src/app/models/app-errors';
+import { NotFoundError } from 'src/app/models/notFoundError';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class WeatherDataService {
   static STATUS_SUCCESS = 'SUCCESS';
   status: string;
   apiRes;
+  // private notFoundError = new NotFoundError();
 
   // tslint:disable-next-line: variable-name
   constructor(protected _http: HttpClient) { }
@@ -29,15 +31,15 @@ export class WeatherDataService {
       retry(1),
       catchError(this.handleError)
     );
-
     return this.apiRes as Observable<WeatherDataByCity>;
   }
 
-  handleError(error) {
-    const errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // Client side Error
-      return throwError(error) as ApplicationErrors;
+  handleError(error: HttpErrorResponse) {
+    console.log('0000' , throwError(error));
+    if (error instanceof HttpErrorResponse) {
+      return throwError(new ApplicationErrors(error));
+    } else {
+      return throwError(new NotFoundError());
     }
   }
   // Pass city name in query get its weather forecast

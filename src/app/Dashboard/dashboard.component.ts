@@ -1,6 +1,9 @@
 import { Component, OnInit,} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { WeatherDataService } from '../services/weatherData/weather-data.service';
+import { NotFoundError } from '../models/notFoundError';
+import { ApplicationErrors } from '../models/app-errors';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -16,6 +19,8 @@ export class DashboardComponent implements OnInit {
   weatherInDegrees;
   forecastedWeather;
   showForecast: boolean;
+  failRequest: boolean;
+  errMessage: any;
 
    get cityName() {
      return this.findCityForm.get('nameOfCity');
@@ -52,13 +57,9 @@ export class DashboardComponent implements OnInit {
       this.weatherInDegrees = this.cityWeather.main.temp;
       this.switchUnit('kelvin');
     },
-    (error: Response) => {
-      if(error.status === 404) {
-        this.findCityForm.get('nameOfCity').setErrors(error.json());
-        alert ('Please enter valid name of the city')
-      } else {
-        alert ('Oops! This is unexpected');
-      }
+    (err) => {
+      this.errMessage = err.originalError.error.message;
+      this.failRequest = true;
     })
   }
 
