@@ -1,6 +1,6 @@
 import { CapitalizePipe } from './capitalize.pipe';
 
-describe('CapitalizePipe', () => {
+describe('Pipe: CapitalizePipe', () => {
   let pipe: CapitalizePipe;
 
   beforeEach(() => {

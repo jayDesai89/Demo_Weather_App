@@ -45,8 +45,8 @@
 }
 
 .container {
-  max-width: -webkit-fill-available;
-  max-height: fit-content;
+  // max-width: -webkit-fill-available;
+  // max-height: fit-content;
 
   @media screen and (max-width: 775px) {
     max-width: 100%;
@@ -95,3 +95,35 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.headerRow {
+  width: 100%;
+  margin: 0px;
+  background-color: $lightGrey;
+  // .userInfo {
+  //   width: 100%;
+  //   text-align: right;
+  //   div,p{
+  //     display: inline-block;
+  //   }
+  //   .userImg {
+  //     width: 30px;
+  //     height: 30px;
+  //     border-radius: 50%;
+  //     background-color: purple;
+  //     margin-right: 1%;
+  //   }
+  //   .userName {
+  //     color: $blueTextColor;
+  //     font-weight: $light;
+  //   }
+  // }
+}
+
+.sidebar-container {
+ position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

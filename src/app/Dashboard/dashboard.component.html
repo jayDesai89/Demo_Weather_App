@@ -1,33 +1,61 @@
-<div class="dashboard">
-  <div class="header">
-    <div class="row mb-3">
+
+<section>
+  <!-- current Temp and Search article START -->
+  <article>
+
+  </article>
+   <!-- current Temp and Search article END -->
+   <!-- Forecast of weather table START -->
+  <article>
+
+  </article>
+  <!-- Forecast of weather table END -->
+</section>
+
+
+
+
+
+
+
+
+
+<!-- OLD Structure -->
+<!-- <div class="">
+  <header class="header">
+    <section class="row mb-3">
       <div class="col-12 text-center">
-        <div class="titleDiv">
+        <title class="titleDiv">
           <h1>
             My Weather App
           </h1>
-        </div>
+        </title>
       </div>
-    </div>
-  </div>
-  <div class="container">
+    </section>
+  </header>
+<div class="container">
     <div class="row">
       <div class="col-12">
+        <div style="text-align:center;">
+          <mat-error *ngIf="failRequest">
+            {{errMessage}}
+          </mat-error>
+        </div>
         <div>
           <div class="row">
             <div class="col-12">
               <div>
-                <form action="" class="formStyle" (ngSubmit)="getWeatherForCity(findCityForm.value)"
+                <form action="" class="formStyle mb-3" (ngSubmit)="getWeatherForCity(findCityForm.value)"
                   [formGroup]="findCityForm">
-                  <!-- form row for input field starts here -->
+
                   <div class="row">
                     <div class="col-lg-10 col-md-8 col-sm-12 m-auto text-center">
                       <div class="w-100">
                         <mat-form-field>
                           <input matInput placeholder="Enter name of the city" (ngSubmit)="getWeatherForCity()"
                             formControlName="nameOfCity" required>
-                          <mat-error *ngIf="cityName.invalid">
-                            Please enter valid city name
+                          <mat-error *ngIf="failRequest">
+                            {{errMessage}}
                           </mat-error>
                         </mat-form-field>
                       </div>
@@ -40,7 +68,7 @@
                       </div>
                     </div>
                   </div>
-                  <!-- Form row for input field ends here -->
+
                 </form>
               </div>
               <div class="text-center" *ngIf="cityWeather">
@@ -60,9 +88,9 @@
                 </mat-button-toggle-group>
               </div>
             </div>
-            <!-- Temp main col-->
+
             <div class="col-8">
-              <!---Row 1 for title of the city-->
+
               <div class="row">
                 <div class="col-12">
                   <div>
@@ -83,7 +111,7 @@
                 <div class="col-1">
                 </div>
               </div>
-              <!-- Row 2 for weather Data-->
+
               <div class="row mb-4">
                 <div class="col-6">
                   <div>
@@ -197,4 +225,100 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+<!-- OLD Structure -->
+
+
+
+
+<!-- ========== Saved Location Logic ==================== -->
+<!-- <div class="show-weather grid-start row">
+  <div class="col-4 text-center side-border">
+    <section class="left-section">
+      <header>
+        <h3>
+          Saved Location
+        </h3>
+      </header>
+    </section>
+  </div>
+  <div class="col-8">
+    <section class="right-section">
+      <div class="row mt-3" *ngIf="cityWeather">
+        <div class="col-4">
+          <header>
+            <h4>
+              {{cityWeather.name}}, {{cityWeather.sys.country}}
+            </h4>
+            <p class="weather-in-degree">
+              {{weatherInDegrees}}
+              <span class="logoF" *ngIf="tempConverterGroup.value == 'fahrenheit'">
+                &#8457;
+              </span>
+              <span class="logoC" *ngIf="tempConverterGroup.value == 'celsius'">
+                &#8451;
+              </span>
+            </p>
+            <p>
+              <strong *ngFor="let info of cityWeather.weather; i as index">
+                {{info.description | capitalize}}
+              </strong>
+            </p>
+          </header>
+        </div>
+        <div class="col-8">
+          <div>
+            <mat-button-toggle-group #tempConverterGroup="matButtonToggleGroup" value="fahrenheit"
+              (click)="switchUnit(tempConverterGroup.value)">
+              <mat-button-toggle value="celsius">&#8451;</mat-button-toggle>
+              <mat-button-toggle value="fahrenheit">&#8457;</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </div>
+      </div>
+    </section>
+        <div class="row mb-4">
+            <div class="col-6">
+              <div>
+                <strong>
+                  Max Temperature:
+                </strong>
+                <span>
+                  {{cityWeather.main.temp_max | tempconverter}} &#8457;
+                </span>
+              </div>
+              <div>
+                <strong>
+                  Min Temperature:
+                </strong>
+                <span>
+                  {{cityWeather.main.temp_min | tempconverter}} &#8457;
+                </span>
+              </div>
+
+            </div>
+            <div class="col-6">
+              <div>
+                <strong>
+                  Humidity:
+                </strong>
+                <span>
+                  {{cityWeather.main.humidity}}
+                  <span>
+                    %
+                  </span>
+                </span>
+              </div>
+              <div>
+                <strong>
+                  Pressure
+                </strong>
+                <span>
+                  {{cityWeather.main.pressure}}
+                </span>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div> -->
+<!-- ==================================================== -->
