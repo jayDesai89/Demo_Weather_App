@@ -7,9 +7,38 @@ header{
 }
 
 mat-sidenav-container {
-  height: 100%;
   background-image: url('../images/backlit-beach-dawn-dusk-588561.jpg');
+
+  // /* Add the blur effect */
+  // filter: blur(8px);
+  // -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+.view-container {
+  backdrop-filter: blur(8px);
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  // border: 3px solid #f1f1f1;
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  // z-index: 2;
+  // width: 80%;
+  // padding: 20px;
+  // text-align: center;
+}
+
 
 // ######################################### Start Global Customization #########################################
 .width-100 {
