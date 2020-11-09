@@ -14,6 +14,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FivedayforecastComponent } from './fivedayforecast/fivedayforecast.component';
 // Pipes
 import { TempconverterPipe } from './pipes/tempconverter.pipe';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
@@ -40,7 +41,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     CheckDatePipe,
     SidebarComponent,
     ResizableDirective,
-    HeaderComponent
+    HeaderComponent,
+    FivedayforecastComponent
   ],
   imports: [
     BrowserModule,
