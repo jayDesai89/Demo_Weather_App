@@ -1,17 +1,23 @@
 <!-- logo and C/f button  START -->
 <!-- Left column with Logo start -->
 <section>
-  <div class="row">
+  <div class="row pad-10-all">
     <div class="col-6 text-left">
       <div>
         <h1>Accurate Weather</h1>
       </div>
     </div>
-    <div class="col-6 text-right">
+    <div class="col-6 text-right margin-auto">
       <div>
         <mat-button-toggle-group name="tempUntType" aria-label="Temperature Unit Type">
-          <mat-button-toggle value="celsius" role="button" aria-pressed="false">C</mat-button-toggle>
-          <mat-button-toggle value="fahrenheit" role="button" aria-pressed="false">F</mat-button-toggle>
+          <mat-button-toggle value="celsius" role="button" aria-label="degree celsius" style="background-color: black;color: white;margin: auto;width: 100px;">
+            <sup style="margin-top: 25px;font-size: large;font-weight: 500;">o</sup>
+              <p style="margin-left: 5px;font-size: x-large; display: inline;">C</p>
+          </mat-button-toggle>
+          <mat-button-toggle value="fahrenheit" role="button" aria-label="degree fahrenheit">
+            <sup style="margin-top: 25px;font-size: medium;font-weight: 500;">o</sup>
+              <p style="margin-left: 5px;font-size:medium; display: inline;">F</p>
+          </mat-button-toggle>
         </mat-button-toggle-group>
       </div>
     </div>

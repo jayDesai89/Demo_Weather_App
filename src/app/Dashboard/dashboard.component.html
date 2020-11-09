@@ -1,14 +1,71 @@
 
-<section>
-  <!-- current Temp and Search article START -->
+<section class="pad-10-all">
+  <!-- Current Temp and Search article START -->
   <article>
+    <section>
+      <div class="row">
+        <div class="col-4 col-lg-4 col-md-6 col-sm-12">
+          <h2 class="cityName">
+            Toronto
+          </h2>
+          <div class="flex flex-justify-content-space-between" style="align-items: flex-start;">
+            <div class="leftBox">
+              <div class="flex">
+                <h3 style="font-size: 50px;">36</h3>
+                <sup style="margin-top: 25px;font-size: larger;font-weight: 500;">o</sup>
+                <sup style="margin-top: 28px;margin-left: 5px; font-size: larger;font-weight: 500;">C</sup>
+              </div>
+              <p>
+                Partly Cloudily
+              </p>
+            </div>
+            <div class="rightBox pad-10-all">
+              <p>
+                Max : <span>36 Degree</span>
+              </p>
+              <p>
+                Min : <span>10 Degree</span>
+              </p>
+              <p>
+                Humidity : <span>50%</span>
+              </p>
+            </div>
+          </div>
 
+        </div>
+        <div class="col-8 col-lg-8 col-md-6 col-sm-12">
+          <div class="text-right">
+            <mat-form-field class="example-full-width" style="width: 70%;">
+              <mat-label style="color: white;">Toronto</mat-label>
+              <input matInput placeholder="Place" value="Sushi">
+            </mat-form-field>
+          </div>
+          <div class="flex" style="justify-content: flex-end;">
+            <p class="pad-v-10">
+              North Caroline
+            </p>
+            <p class="pad-v-10">
+              Mississauga
+            </p>
+            <p class="pad-10-left">
+              Brampton
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </article>
-   <!-- current Temp and Search article END -->
+
+  <section class="mar-15-bottom">
+    <button class="pad-5-all" mat-button role="button" aria-label="5 days weather" style="background-color: black;color: white;">Next 5 days forecast</button>
+  </section>
+   <!-- Current Temp and Search article END -->
+   <mat-divider style="background-color: white;"></mat-divider>
    <!-- Forecast of weather table START -->
-  <article>
+   <section class="pad-15-top">
+    <app-fivedayforecast></app-fivedayforecast>
+   </section>
 
-  </article>
   <!-- Forecast of weather table END -->
 </section>
 
