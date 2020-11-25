@@ -1,10 +1,37 @@
-# Goal
+# Demo Weather App
 
-Ddevelop a weather app in short time span (4 hours) built with Angular 8.
+It is **Angular 9** based webpage to view the "Current Weather" and "Forcasted Weather" for any city searched by user.
 
-# DemoWeatherApp
+# Description
+Search the city by name in search bar and select the city from drop down.
+Click the button "Show" and you can see the weather of a searched city.
+Initial version of this webpage was developed as a part of an interview process in very short time. later I worked on it as a side project.
+After 1st itiration, I **designed UI/UX** from scratch as well as did **front-end coding in Angular frame work**.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20 and Desgined usign AdobeXD
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+# Requirements
+
+Angular framework
+
+Use building blocks of framework such as Modules, Components, Services, Data binding, Directives etc.
+
+ACCESSIBLE
+
+# Visuals 
+
+// TODO : Add Screen shot of webpage here
+
+// 1 Screen shot : Design phase
+
+// 2 Screen shotDeveloped webpage, how it should look on your end
+
+# Instalation 
+
+Clone the repo
+
+run `ng serve`
+
+// .... Add detail steps here
 
 ## Development server
 
